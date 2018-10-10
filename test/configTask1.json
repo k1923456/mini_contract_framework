@@ -1,0 +1,70 @@
+{
+    "metadata": {
+        "network": "http://localhost:8545",
+        "deployer": "0x382bf7f660d5aebc61e8dbd913551eb9e9d550b3",
+        "deployerPriv": "0x72afee81c887d94b16b6781f9bc063392ce742ba63e374ef67a8e66fc78ee29d",
+        "address": "0xc3eA1c5735E204ca9527Bb2996543fC0FF4C39dE",
+        "abi": [
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "amount",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "list",
+                        "type": "address[]"
+                    }
+                ],
+                "name": "multiSendEth",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "constructor"
+            },
+            {
+                "payable": true,
+                "stateMutability": "payable",
+                "type": "fallback"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "name": "_amount",
+                        "type": "uint256"
+                    },
+                    {
+                        "indexed": true,
+                        "name": "_receiver",
+                        "type": "address"
+                    }
+                ],
+                "name": "Send",
+                "type": "event"
+            }
+        ]
+    },
+    "input": {
+        "value": 30000000000000000,
+        "amount": 10000000000000000,
+        "addresses": [
+            "0x3ff25e0d5d5fccb4dd88a758b86e72243708c3e5",
+            "0x612def7fab56a0591b3113e67afe4ab5ad53822a",
+            "0xd9e03b8605d30568aaf3f73f18d9198e6a80baa7"
+        ]
+    }
+}

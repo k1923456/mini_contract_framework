@@ -1,0 +1,30 @@
+
+1. What's UTXO?
+  UTXO全名為Unspent Transaction Outputs, 任何交易行為都會產生若干個UTXO,並且消耗原有的UTXO.
+  每個UTXO都會有amount值, 其通常會將一個account擁有全部UTXO的amount加起來, 當成這個account的balance.
+  而目前標準的transaction分成5種: P2PKH, P2PK, MultiSignature, P2SH, OP_Return
+  另外, 現行BTC mainnet採用了SegWit技術, 使digital signature不存在transaction的data中,
+  避免Transaction Malleability問題以及減少transaction data size
+
+2. What's gaslimit in Ethereum?
+  gaslimit分成2種: block gas limit以及transaction gas limit
+  block gas limit是每個block能支付給區塊內每個transaction gas的上限值, 其目的是防止某些transaction消耗太多計算資源導致網路癱瘓.
+  每個block的block gas limit的數值會稍微不同, 由ethereum系統以及礦工的投票來決定.
+  transaction gas limit就是user在發起交易時可以設定的一項參數, 目的也是防止"user"發出的transacion消耗太多計算資源
+
+3. What's the difference between ImToken and Trezor?
+  ImToken與Trezor最大的不同在於: 前者為軟體錢包, 後者為硬體錢包
+  軟體錢包通常會被安裝在隨時具有網路環境的裝置上, 而硬體錢包只會在broadcast transaction時才會需要連接網路
+  因此前者較具方便性, 後者較具安全性.
+
+4. How would you design the private key storage in our Mithril Vault architecture?
+  由於Mithril的Vault為單一address, 有2種解決方案:
+  a. 將Vault設定成MultiSigWallet Contract的Address, 需要多個address共同驗證才能動用Vault裡面的MITH token
+  b. 將Vault的private key儲存在冷錢包中, 只有特定時間才會連接到網路並動用MITH token
+
+  也可以將上述兩種方法以hybrid的形式結合, 使Vault更為安全.
+
+5. What's indexed for in smart contract event log?
+  indexed參數將會被存在receipt data中的topics區域, 可以被web3 protocol當作filter的種類依據.
+  EX: 若有event為Send(uint256 _amount, address indexed _receiver);
+      就可以用receiver="0xABC..."從block中篩選event資料.
